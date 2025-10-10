@@ -107,4 +107,6 @@ SELECT min(max) from (select max(SAL) as max from emps group by dept_id) as x;
 -- A33
 -- GROUP BY und Aggregatfunktionen wie COUNT(), SUM(), AVG(), MIN() und MAX()
 
--- ???
+-- A34
+select MIN(SAL), MIN(COMM), MAX(SAL), MAX(COMM), AVG(SAL), AVG(COMM), COUNT(SAL), COUNT(COMM) from emps where dept_id = 30;
+
