@@ -110,3 +110,5 @@ SELECT min(max) from (select max(SAL) as max from emps group by dept_id) as x;
 -- A34
 select MIN(SAL), MIN(COMM), MAX(SAL), MAX(COMM), AVG(SAL), AVG(COMM), COUNT(SAL), COUNT(COMM) from emps where dept_id = 30;
 
+-- A35
+select MIN(SAL), MAX(SAL), AVG(SAL) from emps group by dept_id;
