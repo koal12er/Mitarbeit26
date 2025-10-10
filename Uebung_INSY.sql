@@ -57,3 +57,52 @@ select SUM(SAL) as TotalSAL from emps;
 -- A18
 select AVG(IFNULL(emps.COMM,250)) as AVGCOMM from emps;
 
+-- A19
+select COUNT(SAL), COUNT(case when COMM>0 then 1 end) from scottnew.emps where dept_id='30';
+
+-- A20
+select COUNT(distinct JOB) from emps;
+
+-- A21
+-- version eins gibt die distinct werte aus version 2 zählt sie
+
+-- A22
+select SUM(SAL), AVG(SAL), COUNT(SAL), SUM(IFNULL(emps.COMM,0)), AVG(IFNULL(emps.COMM,250)), COUNT(IFNULL(emps.COMM,250)) from scottnew.emps where emps.dept_id=30;
+
+-- A23
+select COUNT(JOB) from emps where !(Job='Manager' and Job='Präsident') group by dept_id;
+
+-- A24
+SELECT AVG(emp_count) AS avg_employees_per_dept
+FROM (
+         SELECT dept_id, COUNT(*) AS emp_count
+         FROM scottnew.emps
+         GROUP BY dept_id
+     ) AS dept_counts;
+
+-- A25
+select * from emps where JOB='Manager' or JOB='President';
+
+-- A26
+SELECT ENAME, JOB, COMM FROM emps WHERE (SAL * 0.25) < COMM;
+
+-- A27
+select MIN(SAL+COMM) from emps;
+
+-- A28
+select MIN(emps.HIREDATE) as oldestEmployee from emps;
+
+-- A29
+select Count(id), JOB, dept_id from emps group by dept_id,JOB order by dept_id, JOB;
+
+-- A30
+SELECT min(max) from (select max(SAL) as max from emps group by dept_id) as x;
+
+-- A31
+-- null ist keine provision 0 ist eine provision im wert von 0
+
+-- A32
+-- count(*) zählt alle zeilen, count(parent_id) zählt alle parent_ids, count distinct parent id zählt alle einzigartigen parent ids
+
+-- A33
+-- GROUP BY und Aggregatfunktionen wie COUNT(), SUM(), AVG(), MIN() und MAX()
