@@ -173,3 +173,6 @@ select Count(id) from emps where dept_id = (select DEPTNO from depts where LOC='
 
 -- A54
 select ENAME from emps where dept_id = (select DEPTNO from depts where LOC='NEW YORK');
+
+-- A55
+select ENAME from emps where dept_id = (select DEPTNO from depts where LOC='CHICAGO') and JOB=(select JOB from emps where ENAME='ALLEN');
