@@ -168,3 +168,5 @@ Select ENAME, JOB, SAL from emps where SAL=(select MAX(SAL) from emps);
 -- A52
 select ENAME FROM emps where CHAR_LENGTH(ENAME) = (select Max(Char_Length(Ename))from emps);
 
+-- A53
+select Count(id) from emps where dept_id = (select DEPTNO from depts where LOC='NEW YORK');
