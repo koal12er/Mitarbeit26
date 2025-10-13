@@ -164,3 +164,7 @@ select ENAME from emps where JOB = (select JOB from emps where ENAME='JONES') an
 
 -- A51
 Select ENAME, JOB, SAL from emps where SAL=(select MAX(SAL) from emps);
+
+-- A52
+select ENAME FROM emps where CHAR_LENGTH(ENAME) = (select Max(Char_Length(Ename))from emps);
+
