@@ -112,3 +112,53 @@ select MIN(SAL), MIN(COMM), MAX(SAL), MAX(COMM), AVG(SAL), AVG(COMM), COUNT(SAL)
 
 -- A35
 select MIN(SAL), MAX(SAL), AVG(SAL) from emps group by dept_id;
+
+-- A36
+select MIN(SAL), MAX(SAL), AVG(SAL), COUNT(ENAME) from emps where !(JOB='Manager' or JOB='President') group by dept_id;
+
+-- A37
+select JOB, AVG(SAL) from emps where COMM IS NULL group by JOB;
+
+-- A38
+select (SAL+IFNULL(COMM, 100))*12  as GesamtJahreszahlung from emps;
+
+-- A39
+-- in mysql nicht möglich
+-- von innen nach außen ausgeführt (subselect)
+
+-- A40
+select JOB, AVG(SAL) as Durchschnittseinkommen from emps group by JOB HAVING AVG(SAL) > 1500 order by AVG(SAL);
+
+-- A41
+select dept_id from emps where JOB='CLERK' group by dept_id HAVING COUNT(SAL)>=2;
+
+-- A42
+-- where gilt für einzelne having gilt für zeilen/gruppen
+
+-- A43
+select JOB, AVG(SAL) as Durchschnittseinkommen from emps group by JOB HAVING AVG(SAL) > 1500 order by JOB;
+
+-- A44
+-- where dann having
+
+-- A45
+-- für where brauch ich kein group by
+
+-- A46
+select SAL from emps where SAL>(select SAL from emps where ENAME='JONES');
+
+-- A47
+select e.ENAME, e.SAL, (select ENAME from emps where id = e.parent_id) as Vorgesetzter from emps e where SAL>(select SAL from emps where id = e.parent_id);
+select e.ENAME, e.SAL, a.ENAME, a.SAL from emps e join emps a on e.id=a.parent_id where a.SAL>e.SAL;
+
+-- A48
+select e.SAL from emps e where SAL*0.3<(select SAL from emps where id = e.parent_id and JOB='President');
+select e.SAL, e.ENAME from emps e join emps a on e.parent_id=a.id where e.SAL*0.3<a.SAL and a.JOB='President';
+
+-- A49
+select e.DEPTNO from depts e where (select count(*) from emps where dept_id=e.DEPTNO)=0;
+select DEPTNO as counted from depts d left join emps on dept_id = DEPTNO group by DEPTNO having count(id) = 0;
+
+-- A50
+select ENAME from emps where JOB = (select JOB from emps where ENAME='JONES') and ENAME != 'JONES';
+
