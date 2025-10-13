@@ -170,3 +170,6 @@ select ENAME FROM emps where CHAR_LENGTH(ENAME) = (select Max(Char_Length(Ename)
 
 -- A53
 select Count(id) from emps where dept_id = (select DEPTNO from depts where LOC='NEW YORK');
+
+-- A54
+select ENAME from emps where dept_id = (select DEPTNO from depts where LOC='NEW YORK');
