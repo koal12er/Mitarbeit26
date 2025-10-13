@@ -162,3 +162,5 @@ select DEPTNO as counted from depts d left join emps on dept_id = DEPTNO group b
 -- A50
 select ENAME from emps where JOB = (select JOB from emps where ENAME='JONES') and ENAME != 'JONES';
 
+-- A51
+Select ENAME, JOB, SAL from emps where SAL=(select MAX(SAL) from emps);
