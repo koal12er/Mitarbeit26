@@ -176,3 +176,6 @@ select ENAME from emps where dept_id = (select DEPTNO from depts where LOC='NEW 
 
 -- A55
 select ENAME from emps where dept_id = (select DEPTNO from depts where LOC='CHICAGO') and JOB=(select JOB from emps where ENAME='ALLEN');
+
+-- A56
+select JOB from emps group by JOB having avg(SAL)>(Select AVG(SAL) from emps where JOB = 'SALESMAN');
