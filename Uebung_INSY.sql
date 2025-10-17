@@ -198,3 +198,7 @@ SELECT e.ENAME, e.dept_id, e.HIREDATE FROM emps e JOIN (SELECT dept_id, MAX(HIRE
 
 -- A61
 select Distinct e.dept_id from emps e join depts d on e.dept_id = d.deptno;
+
+-- A62
+select e.ENAME, e.SAL, e.dept_id from emps e where e.SAL>=(select AVG(SAL)from emps where e.dept_id=dept_id group by e.dept_id);
+select e.ENAME, e.SAL, e.dept_id from emps e join (select dept_id, Avg(SAL) as AVGSAL from emps group by dept_id) a on e.dept_id = a.dept_id where a.AVGSAL<=e.SAL;
