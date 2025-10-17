@@ -179,3 +179,12 @@ select ENAME from emps where dept_id = (select DEPTNO from depts where LOC='CHIC
 
 -- A56
 select JOB from emps group by JOB having avg(SAL)>(Select AVG(SAL) from emps where JOB = 'SALESMAN');
+
+-- A57
+select e.ENAME, e.JOB from emps e where e.JOB = (select JOB from emps where dept_id=30 and JOB=e.JOB) and e.dept_id =10;
+SELECT DISTINCT e.ENAME, e.JOB FROM emps e JOIN emps x ON e.JOB = x.JOB WHERE e.dept_id = 10 AND x.dept_id = 30;
+
+-- A58
+select e.ENAME, e.JOB from emps e where e.JOB != (select JOB from emps where dept_id=30 and JOB=e.JOB) and e.dept_id =10; -- wrong
+select e.ENAME, e.JOB from emps e join emps a on e.JOB=a.JOB where e.dept_id=10 and a.dept_id!=30; -- wrong
+SELECT e.ename, e.job FROM emps e WHERE e.job IN (SELECT job FROM emps WHERE dept_id = 10)AND e.job NOT IN (SELECT job FROM emps WHERE dept_id = 30);
