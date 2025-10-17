@@ -195,3 +195,6 @@ SELECT e.ENAME, e.JOB FROM emps e WHERE e.JOB IN (SELECT JOB FROM emps WHERE dep
 -- A60
 select e.ENAME, dept_id from emps e where HIREDATE=(select HIREDATE from emps where dept_id=e.dept_id order by HIREDATE desc limit 1)order by dept_id;
 SELECT e.ENAME, e.dept_id, e.HIREDATE FROM emps e JOIN (SELECT dept_id, MAX(HIREDATE) AS max_hire FROM emps GROUP BY dept_id) m ON e.dept_id = m.dept_id AND e.HIREDATE = m.max_hire ORDER BY e.dept_id;
+
+-- A61
+select Distinct e.dept_id from emps e join depts d on e.dept_id = d.deptno;
