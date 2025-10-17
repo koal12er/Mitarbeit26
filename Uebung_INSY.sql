@@ -202,3 +202,7 @@ select Distinct e.dept_id from emps e join depts d on e.dept_id = d.deptno;
 -- A62
 select e.ENAME, e.SAL, e.dept_id from emps e where e.SAL>=(select AVG(SAL)from emps where e.dept_id=dept_id group by e.dept_id);
 select e.ENAME, e.SAL, e.dept_id from emps e join (select dept_id, Avg(SAL) as AVGSAL from emps group by dept_id) a on e.dept_id = a.dept_id where a.AVGSAL<=e.SAL;
+
+-- A63
+select LOC, DNAME from depts where 4<=(select count(ENAME)from emps where dept_id=DEPTNO);
+select LOC, DNAME from depts join emps on dept_id=DEPTNO group by DEPTNO having 4<=COUNT(ENAME);
