@@ -206,3 +206,7 @@ select e.ENAME, e.SAL, e.dept_id from emps e join (select dept_id, Avg(SAL) as A
 -- A63
 select LOC, DNAME from depts where 4<=(select count(ENAME)from emps where dept_id=DEPTNO);
 select LOC, DNAME from depts join emps on dept_id=DEPTNO group by DEPTNO having 4<=COUNT(ENAME);
+
+-- A64
+select e.ENAME, e.SAL, e.dept_id from emps e where (e.SAL+e.SAL/10)>=(select AVG(SAL)from emps where e.dept_id=dept_id group by e.dept_id) or (e.SAL-e.SAL/10)<=(select AVG(SAL)from emps where e.dept_id=dept_id group by e.dept_id);
+select e.ENAME, e.SAL, e.dept_id from emps e join (select dept_id, AVG(SAL) as AVGSAL from emps group by dept_id) a on e.dept_id=a.dept_id where e.SAL*1.1>=a.AVGSAL or e.SAL*0.9<=a.AVGSAL;
