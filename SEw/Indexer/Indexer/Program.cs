@@ -16,7 +16,17 @@ Console.WriteLine("1. Pilot: " + f1[1]);
 Console.WriteLine("Suche nach 'Charles Leclerc': " + f1["Charles Leclerc"]);
 Console.WriteLine("Suche nach 'Lando Norris': " + f1["Lando Norris"]);
 
+
+f1["Lewis Hamilton"] = new Person { FirstName = "Lewis", LastName = "Hamilton" };    
+
 // Versuch, jemanden zu finden, der nicht existiert
 var unknown = f1["Lewis Hamilton"];
 if (unknown == null)
     Console.WriteLine("Lewis Hamilton wurde nicht gefunden 😅");
+else
+{
+    Console.WriteLine("Lewis Hamilton wurde  gefunden ");
+}
+
+
+

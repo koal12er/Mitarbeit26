@@ -3,13 +3,15 @@ namespace Indexer;
 public class Formel1Piloten
 {
     private const int MAX_PILOTS = 99;
-    Person[] _piloten = new Person[MAX_PILOTS];
+    private Person[] _piloten = new Person[MAX_PILOTS];
+
 
     public Person this[int i]
     {
-        get{return _piloten[i-1];}
-        set{_piloten[i-1]=value;}
+        get { return _piloten[i - 1]; }
+        set { _piloten[i - 1] = value; }
     }
+
 
     public Person this[string s]
     {
@@ -17,12 +19,30 @@ public class Formel1Piloten
         {
             for (int i = 0; i < MAX_PILOTS; i++)
             {
-                if (_piloten[i] != null)
-                    if(_piloten[i].ToString()==s)
-                        return _piloten[i];
+                if (_piloten[i] != null && _piloten[i].ToString() == s)
+                    return _piloten[i];
             }
             return null;
         }
+        set
+        {
+            
+            for (int i = 0; i < MAX_PILOTS; i++)
+            {
+                if (_piloten[i] == null)
+                {
+                    _piloten[i] = value;
+                    return;
+                }
+            }
+            
+        }
     }
-        
+
+    public override string ToString()
+    {
+        return base.ToString();
+    }
+    
+    
 }
