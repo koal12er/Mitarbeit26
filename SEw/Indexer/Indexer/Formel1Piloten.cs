@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Text;
+
 namespace Indexer;
 
-public class Formel1Piloten
+public class Formel1Piloten : IEnumerable
 {
     private const int MAX_PILOTS = 99;
     private Person[] _piloten = new Person[MAX_PILOTS];
@@ -41,8 +44,16 @@ public class Formel1Piloten
 
     public override string ToString()
     {
-        return base.ToString();
+        StringBuilder sb = new  StringBuilder();
+        for (int i = 0; i < MAX_PILOTS; i++)
+        {
+            sb.Append($"{i + 1}. {_piloten[i]}\n");
+        }
+        return sb.ToString();
     }
-    
-    
+
+    public IEnumerator GetEnumerator()
+    {
+        return _piloten.GetEnumerator();
+    }
 }
