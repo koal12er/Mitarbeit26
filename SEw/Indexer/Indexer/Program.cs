@@ -53,3 +53,5 @@ foreach (var person in f1 )
     if (person != null)
         Console.WriteLine(person);
 }
+
+//geht?
