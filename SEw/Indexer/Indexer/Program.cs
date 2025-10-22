@@ -54,4 +54,3 @@ foreach (var person in f1 )
         Console.WriteLine(person);
 }
 
-//geht?
