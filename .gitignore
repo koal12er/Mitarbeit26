@@ -1,9 +1,0 @@
-bin/
-obj/
-.idea/
-*.user
-*.suo
-*.cache
-*.log
-*.vs/
-
