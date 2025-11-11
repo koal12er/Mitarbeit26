@@ -13,8 +13,8 @@ vindobona.Add(a);
 vindobona.Add(b);
 vindobona.Add(c);
 
-Console.WriteLine(vindobona.ToString());
 
+Console.WriteLine("Zug besteht aus:");
 foreach (var w in vindobona)
 {
     Console.WriteLine(w);

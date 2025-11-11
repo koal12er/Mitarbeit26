@@ -1,13 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace IteratorTrain
 {
+    // Iterator, der über die Wagons eines Train-Objekts läuft
     public class IteratorTrain : IEnumerator<Wagon>
     {
-        private Train _train;
-        private Wagon? _current;
+        private Train _train;         // der Zug, über den iteriert wird
+        private Wagon? _current;      // aktueller Wagon
+        private bool _started = false;
 
         public IteratorTrain(Train train)
         {
@@ -15,36 +16,35 @@ namespace IteratorTrain
             _current = null;
         }
 
-        // Aktuelles Element
+        // gibt den aktuellen Wagon zurück
         public Wagon Current => _current!;
 
         object IEnumerator.Current => Current;
 
-        // 🔹 Startet wieder von vorn
-        public void Reset()
-        {
-            _current = null;
-        }
-
-        // 🔹 Geht zum nächsten Wagon
+        // springt zum nächsten Wagon
         public bool MoveNext()
         {
-            if (_current == null)
+            if (!_started)
             {
-                _current = _train.first;
+                _current = _train.First;
+                _started = true;
             }
             else
             {
-                _current = _current.Next;
+                _current = _current?.Next;
             }
 
             return _current != null;
         }
 
-        // Braucht man fast nie wirklich, aber Pflicht
-        public void Dispose()
+        // setzt den Iterator zurück
+        public void Reset()
         {
+            _current = null;
+            _started = false;
         }
+
+        // wird hier nicht gebraucht, aber Pflicht (wegen IDisposable)
+        public void Dispose() { }
     }
 }
-

@@ -1,44 +1,37 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 
-namespace IteratorTrain;
-
-public class Train: IEnumerable<Wagon>
+namespace IteratorTrain
 {
-   
-    public Wagon first;
-    
-    
-
-    public void Add(Wagon tooAdd)
+    public class Train : IEnumerable<Wagon>
     {
-        tooAdd.Next = first;
-        StringBuilder sb = new StringBuilder();
-        
-    }
+        public Wagon? First;
 
-    override public string ToString()
-    {
-        Wagon temp = first;
-        StringBuilder sb = new StringBuilder();
-        while(temp!=null){
-            sb.Append(temp+"\n");
-            temp = temp.Next;
+        public void Add(Wagon w)
+        {
+            w.Next = First;
+            First = w;
         }
-        return sb.ToString();
-    }
-    
-    // 🔹 Hier wird der IteratorTrain verwendet
-    public IEnumerator<Wagon> GetEnumerator()
-    {
-        return new IteratorTrain(this);
-    }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            var temp = First;
+            while (temp != null)
+            {
+                sb.AppendLine(temp.ToString());
+                temp = temp.Next;
+            }
+            return sb.ToString();
+        }
 
-    
+        // Iterator verwenden
+        public IEnumerator<Wagon> GetEnumerator()
+        {
+            return new IteratorTrain(this);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
 }
-
