@@ -1,15 +1,21 @@
-namespace IteratorTrain;
-
-public class Wagon
+namespace IteratorTrain
 {
-    public string Color { get; set; }
-    public int Capacity { get; set; }
-    public Wagon Next;
-
-
-
-    public override string ToString()
+    // Repräsentiert einen einzelnen Wagon im Zug
+    public class Wagon
     {
-        return $"Wagon {Color} , capacity {Capacity}";
+        // Farbe des Wagons
+        public string Color { get; set; }
+
+        // Maximale Kapazität (z. B. Personen oder Tonnen)
+        public int Capacity { get; set; }
+
+        // Verweis auf den nächsten Wagon in der Kette
+        public Wagon? Next;
+
+        // Gibt eine kurze Textbeschreibung des Wagons zurück
+        public override string ToString()
+        {
+            return $"Wagon {Color}, capacity {Capacity}";
+        }
     }
 }
