@@ -1,8 +1,9 @@
+using System.Collections;
 using System.Text;
 
 namespace IteratorTrain;
 
-public class Train
+public class Train: IEnumerable<Wagon>
 {
    
     public Wagon first;
@@ -26,18 +27,18 @@ public class Train
         }
         return sb.ToString();
     }
-
     
-}
-
-public class Wagon
-{
-    public int Capacity { get; set; }
-    public string Color { get; set; }
-    public Wagon  Next { get; set; }
-    
-    override public string ToString()
+    // 🔹 Hier wird der IteratorTrain verwendet
+    public IEnumerator<Wagon> GetEnumerator()
     {
-        return $"{Capacity}Seats, {Color}";
+        return new IteratorTrain(this);
     }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    
 }
+

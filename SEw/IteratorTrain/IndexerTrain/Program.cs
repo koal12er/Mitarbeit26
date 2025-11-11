@@ -14,3 +14,8 @@ vindobona.Add(b);
 vindobona.Add(c);
 
 Console.WriteLine(vindobona.ToString());
+
+foreach (var w in vindobona)
+{
+    Console.WriteLine(w);
+}
