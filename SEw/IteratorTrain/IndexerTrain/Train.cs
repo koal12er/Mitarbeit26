@@ -37,8 +37,7 @@ namespace IteratorTrain
         {
             return new IteratorTrain(this);
         }
-
-        // Nicht-generische Version (für ältere .NET-Interfaces)
+        
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
