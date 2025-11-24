@@ -15,31 +15,30 @@ CREATE SCHEMA IF NOT EXISTS `Chefs` DEFAULT CHARACTER SET utf8 ;
 USE `Chefs` ;
 
 -- -----------------------------------------------------
--- Table `Chefs`.`Staatschefs`
+-- Table `Chefs`.`Persons`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Chefs`.`Staatschefs` (
-                                                     `_idStaatschef` INT NOT NULL,
-                                                     `Firstname` VARCHAR(45) NULL,
-    `Lastname` VARCHAR(45) NULL,
-    `Age` INT NULL,
-    PRIMARY KEY (`_idStaatschef`))
+CREATE TABLE IF NOT EXISTS `Chefs`.`Persons` (
+                                                 `_id` INT NOT NULL,
+                                                 `Name` VARCHAR(45) NULL,
+                                                 PRIMARY KEY (`_id`))
     ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Chefs`.`Staaten`
+-- Table `Chefs`.`Countries`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Chefs`.`Staaten` (
-                                                 `_idStaaten` INT NOT NULL,
-                                                 `Country` VARCHAR(45) NOT NULL,
-    `Staatschefs__idStaatschef` INT NOT NULL,
-    PRIMARY KEY (`_idStaaten`, `Country`),
-    INDEX `fk_Staaten_Staatschefs_idx` (`Staatschefs__idStaatschef` ASC) VISIBLE,
-    CONSTRAINT `fk_Staaten_Staatschefs`
-    FOREIGN KEY (`Staatschefs__idStaatschef`)
-    REFERENCES `Chefs`.`Staatschefs` (`_idStaatschef`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+CREATE TABLE IF NOT EXISTS `Chefs`.`Countries` (
+                                                   `_id` INT NOT NULL,
+                                                   `Name` VARCHAR(45) NOT NULL,
+                                                   `Persons__id` INT NOT NULL,
+                                                   PRIMARY KEY (`_id`, `Name`),
+                                                   INDEX `fk_Countries_Persons_idx` (`Persons__id` ASC) VISIBLE,
+                                                   UNIQUE INDEX `Persons__id_UNIQUE` (`Persons__id` ASC) VISIBLE,
+                                                   CONSTRAINT `fk_Countries_Persons`
+                                                       FOREIGN KEY (`Persons__id`)
+                                                           REFERENCES `Chefs`.`Persons` (`_id`)
+                                                           ON DELETE NO ACTION
+                                                           ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 
