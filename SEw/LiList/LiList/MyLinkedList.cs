@@ -81,53 +81,68 @@ public class MyLinkedList
 
     public void AddAfter(MyElement element, int value)
     {
-        // Wenn element null ist → abbrechen
-        if (element == null) return;
+        if (element.value < count)
+        {
+            // Wenn element null ist → abbrechen
+            if (element == null) return;
 
-        // Neuen Knoten erstellen
-        MyElement newElement = new MyElement { value = value };
-        
-        // Neuen Knoten zwischen element und element.Next einfügen
-        newElement.Next = element.Next;
-        element.Next = newElement;
-        
-        count++;
-    }
+            // Neuen Knoten erstellen
+            MyElement newElement = new MyElement { value = value };
+
+            // Neuen Knoten zwischen element und element.Next einfügen
+            newElement.Next = element.Next;
+            element.Next = newElement;
+            count++;
+        }
+        else
+        {
+            throw new Exception("Element nicht vorhanden");
+        }
+
+
+}
 
     public void AddBefore(MyElement element, int value)
     {
-        // Wenn element null oder Liste leer → nichts zu tun
-        if (element == null || Head == null) return;
-
-        // Sonderfall: Element ist der Head
-        if (Head == element)
+        if (element.value < count)
         {
-            AddFirst(value); // Einfach vorne einfügen
-            return;
-        }
+            // Wenn element null oder Liste leer → nichts zu tun
+            if (element == null || Head == null) return;
 
-        // Liste durchlaufen und das Element suchen
-        MyElement current = Head;
-        MyElement previous = null;
+            // Sonderfall: Element ist der Head
+            if (Head == element)
+            {
+                AddFirst(value); // Einfach vorne einfügen
+                return;
+            }
 
-        while (current != null && current != element)
-        {
-            previous = current;
-            current = current.Next;
-        }
+            // Liste durchlaufen und das Element suchen
+            MyElement current = Head;
+            MyElement previous = null;
 
-        // Wenn nichts gefunden → abbrechen
-        if (current == null)
-        {
-            return;
-        }
+            while (current != null && current != element)
+            {
+                previous = current;
+                current = current.Next;
+            }
 
-        // Neuen Knoten erstellen und zwischen previous und element einfügen
-        MyElement newElement = new MyElement { value = value };
-        newElement.Next = element;
-        previous.Next = newElement;
+            // Wenn nichts gefunden → abbrechen
+            if (current == null)
+            {
+                return;
+            }
+
+            // Neuen Knoten erstellen und zwischen previous und element einfügen
+            MyElement newElement = new MyElement { value = value };
+            newElement.Next = element;
+            previous.Next = newElement;
         
-        count++;
+            count++;
+        }
+        else
+        {
+            throw new Exception("Element nicht vorhanden");
+        }
     }
 
 
