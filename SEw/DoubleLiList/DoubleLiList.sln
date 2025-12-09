@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleLiList", "DoubleLiList\DoubleLiList.csproj", "{FDCF0EED-CB32-4A52-B2EF-C088755D5720}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleLiList.Tests", "DoubleLiList.Tests\DoubleLiList.Tests.csproj", "{B5162EF7-EA1E-4D3C-85AD-F2AB3A3C6269}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{FDCF0EED-CB32-4A52-B2EF-C088755D5720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDCF0EED-CB32-4A52-B2EF-C088755D5720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDCF0EED-CB32-4A52-B2EF-C088755D5720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5162EF7-EA1E-4D3C-85AD-F2AB3A3C6269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5162EF7-EA1E-4D3C-85AD-F2AB3A3C6269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5162EF7-EA1E-4D3C-85AD-F2AB3A3C6269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5162EF7-EA1E-4D3C-85AD-F2AB3A3C6269}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

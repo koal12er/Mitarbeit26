@@ -7,8 +7,6 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="xunit" Version="2.9.3" />
-    </ItemGroup>
+    <!-- Der ItemGroup Block mit xunit wurde hier komplett entfernt -->
 
 </Project>
