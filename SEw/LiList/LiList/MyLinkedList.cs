@@ -81,25 +81,16 @@ public class MyLinkedList
 
     public void AddAfter(MyElement element, int value)
     {
-        if (element.value < count)
-        {
-            // Wenn element null ist → abbrechen
-            if (element == null) return;
+        // Wenn element null ist → abbrechen
+        if (element == null)  throw new Exception("Element nicht vorhanden");
 
-            // Neuen Knoten erstellen
-            MyElement newElement = new MyElement { value = value };
+        // Neuen Knoten erstellen
+        MyElement newElement = new MyElement { value = value };
 
-            // Neuen Knoten zwischen element und element.Next einfügen
-            newElement.Next = element.Next;
-            element.Next = newElement;
-            count++;
-        }
-        else
-        {
-            throw new Exception("Element nicht vorhanden");
-        }
-
-
+        // Neuen Knoten zwischen element und element.Next einfügen
+        newElement.Next = element.Next;
+        element.Next = newElement;
+        count++;
 }
 
     public void AddBefore(MyElement element, int value)
